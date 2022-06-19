@@ -37,6 +37,35 @@ static void enum_input_devices()
     }
 }
 
+static void enum_output_devices()
+{
+
+    AVOutputFormat *fmt = NULL;
+    while (1)
+    {
+        fmt = av_output_audio_device_next(fmt);
+        if (fmt == NULL)
+        {
+            break;
+        }
+        printf("name = %-10s, long_name = %s, mime_type = %s\n", fmt->name, fmt->long_name, fmt->mime_type);
+
+        AVDeviceInfoList* device_list = NULL;
+        int ret = avdevice_list_output_sinks(
+            fmt,
+            NULL, // device_name
+            NULL, // device_options
+            &device_list
+        );
+        if (ret >= 0)
+        {
+            printf("avdevice_list_output_sinks returns %d\n", ret);
+        }
+        avdevice_free_list_devices(&device_list);
+        device_list = NULL;
+    }
+}
+
 int main()
 {
     avdevice_register_all();
@@ -49,6 +78,10 @@ int main()
     printf("avdevice_version : %x\n", avdevice_version());
     printf("---------------------------------------------------------\n");
 
+    printf("-------------Input devices --------------------------------------------\n");
     enum_input_devices();
+
+    printf("-------------Output devices --------------------------------------------\n");
+    enum_output_devices();
     return 0;
 }
