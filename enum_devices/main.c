@@ -46,6 +46,8 @@ int main()
     printf("---------------------------------------------------------\n");
     printf("avdevice_license: %s\n", avdevice_license());
     printf("---------------------------------------------------------\n");
+    printf("avdevice_version : %x\n", avdevice_version());
+    printf("---------------------------------------------------------\n");
 
     enum_input_devices();
     return 0;
