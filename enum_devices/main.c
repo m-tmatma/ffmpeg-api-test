@@ -44,6 +44,8 @@ int main()
     printf("---------------------------------------------------------\n");
     printf("avdevice_configuration: %s\n", avdevice_configuration());
     printf("---------------------------------------------------------\n");
+    printf("avdevice_license: %s\n", avdevice_license());
+    printf("---------------------------------------------------------\n");
 
     enum_input_devices();
     return 0;
