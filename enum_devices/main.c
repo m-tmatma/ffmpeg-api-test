@@ -40,6 +40,11 @@ static void enum_input_devices()
 int main()
 {
     avdevice_register_all();
+
+    printf("---------------------------------------------------------\n");
+    printf("avdevice_configuration: %s\n", avdevice_configuration());
+    printf("---------------------------------------------------------\n");
+
     enum_input_devices();
     return 0;
 }
