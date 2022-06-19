@@ -19,7 +19,7 @@ static void enum_input_devices()
         {
             break;
         }
-        printf("name = %-10s, long_name = %s\n", fmt->name, fmt->long_name);
+        printf("name = %-10s, long_name = %s, mime_type = %s\n", fmt->name, fmt->long_name, fmt->mime_type);
 
         AVDeviceInfoList* device_list = NULL;
         int ret = avdevice_list_input_sources(
